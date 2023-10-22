@@ -7,15 +7,15 @@ jobs:
   build:
     executor: android/android
     steps:
-      - run:
-          name: Set Java Home
-          command: echo 'org.gradle.java.home=C\:\\Program Files\\Java\\jdk-17 >> $HOME/.gradle/gradle.properties
       - checkout
       - restore_cache:
           key: android-orb-v1-
       - run:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew
+      - run:
+          name: Set Java 17
+          command: echo 'export JAVA_HOME=C\:\\Program Files\\Java\\jdk-17' >> $BASH_ENV
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
