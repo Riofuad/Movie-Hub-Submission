@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieHub">
         <activity android:name="com.riofuad.moviehub.setting.SettingActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/setting"
             />
         <activity
@@ -29,11 +29,11 @@
         </activity>
         <activity
             android:name="com.riofuad.moviehub.detail.DetailActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/detail_movie" />
         <activity
             android:name="com.riofuad.moviehub.home.HomeActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/home" />
     </application>
 
