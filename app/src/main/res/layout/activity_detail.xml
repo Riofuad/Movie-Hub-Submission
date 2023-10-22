@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/secondaryColor"
+    tools:context=".detail.DetailActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnShare"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/topBarCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="10dp"
+                app:cardMaxElevation="10dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/moviePoster"
+                        android:layout_width="match_parent"
+                        android:layout_height="350dp"
+                        android:background="@drawable/card_placeholder"
+                        android:contentDescription="@string/content_description_movie_poster"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/john_whick_chapter_4" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/content_description_movie_poster"
+                        android:src="@drawable/card_detail_foreground" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageButton
+                            android:id="@+id/btnBack"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/ic_arrow_back"
+                            android:contentDescription="@string/content_description_back"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/movieTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="@string/movie_title_placeholder"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/roundedImageView" />
+
+                        <View
+                            android:id="@+id/roundedImageView"
+                            android:layout_width="120dp"
+                            android:layout_height="180dp"
+                            android:layout_marginStart="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/movieSubPoster"
+                android:layout_width="120dp"
+                android:layout_height="180dp"
+                android:layout_marginStart="16dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/card_placeholder"
+                android:elevation="10dp"
+                android:src="@drawable/john_whick_chapter_4"
+                app:layout_constraintBottom_toBottomOf="@+id/topBarCard"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topBarCard"
+                app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.AllRounded" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabFavorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/colorAccent"
+                android:contentDescription="@string/content_description_favorite"
+                android:focusable="true"
+                android:src="@drawable/ic_favorite_outlined"
+                android:tint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/topBarCard"
+                app:rippleColor="@color/primaryColor" />
+
+            <TextView
+                android:id="@+id/tv_rating_movie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:drawablePadding="12dp"
+                android:elevation="10dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:drawableStartCompat="@drawable/ic_star"
+                app:layout_constraintBottom_toBottomOf="@+id/movieSubPoster"
+                app:layout_constraintStart_toEndOf="@+id/movieSubPoster"
+                app:layout_constraintTop_toBottomOf="@+id/topBarCard"
+                tools:text="7.6" />
+
+            <TextView
+                android:id="@+id/tvAboutTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/about"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/movieSubPoster" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/divider"
+                android:layout_width="80dp"
+                android:layout_height="3dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:scaleType="centerCrop"
+                android:src="@color/colorAccent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAboutTitle"
+                app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.AllRounded.Line" />
+
+            <TextView
+                android:id="@+id/movieDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/lorem_ipsum"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnShare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_share_button"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/share"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

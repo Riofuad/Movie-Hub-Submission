@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movie Hub</string>
+    <string name="no_movie_found">Movie Tidak Ditemukan</string>
+    <string name="no_favorite_movie">Tidak Ada Movie Favorite</string>
+    <string name="about">Tentang</string>
+    <string name="share">Bagikan</string>
+    <string name="setting">Pengaturan</string>
+    <string name="search">Cari</string>
+    <string name="change_language">Ganti Bahasa</string>
+    <string name="added_to_favorite">diambahkan ke Favorite!</string>
+    <string name="remove_from_favorite">menghapus dari Favorite!</string>
+    <string name="notification_empty_favorite">Movie Favorite kosong!</string>
+    <string name="notification_error">Terjadi kesalahan!</string>
+    <string name="content_description_back">Kembali</string>
+</resources>

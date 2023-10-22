@@ -1,0 +1,4 @@
+rootProject.name = "Movie Hub Submission"
+include ':app'
+include ':core'
+include ':favorite'
