@@ -6,12 +6,13 @@ plugins {
 }
 apply from: '../shared_dependencies.gradle'
 android {
-    compileSdkVersion 33
+    namespace 'com.riofuad.moviehub.core'
+    compileSdkVersion 34
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         buildConfigField("String", "MOVIE_TOKEN", '"5b25b59228dcb689081331ac674891c0"')
@@ -26,13 +27,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
     buildFeatures {
+        buildConfig = true
         viewBinding = true
     }
 }
@@ -53,6 +55,6 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
 
     implementation "net.zetetic:android-database-sqlcipher:4.4.0"
-    implementation "androidx.sqlite:sqlite-ktx:2.1.0"
+    implementation "androidx.sqlite:sqlite-ktx:2.4.0"
 
 }

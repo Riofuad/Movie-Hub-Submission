@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Movie Hub</string>
+    <string name="app_name" translatable="false">Movie Hub</string>
 
     <string name="nav_movie" translatable="false">Movie</string>
     <string name="nav_favorite" translatable="false">Favorite</string>
@@ -17,9 +17,6 @@
 
     <string name="added_to_favorite">added to Favorite!</string>
     <string name="remove_from_favorite">remove from Favorite!</string>
-    <string name="notification_empty_favorite">Favorite Movie is Empty!</string>
-    <string name="notification_empty" translatable="false">Nothing Here!</string>
-    <string name="notification_error">Something is wrong!</string>
 
     <string name="share_msg" translatable="false">I\'m looking at movie info on the Movie Hub App, Download this App Now!!</string>
 

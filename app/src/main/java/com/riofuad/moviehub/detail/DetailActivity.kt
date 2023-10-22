@@ -28,6 +28,7 @@ class DetailActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
+        @Suppress("DEPRECATION")
         val detailMovie = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra(EXTRA_MOVIE, Movie::class.java)
         } else {
@@ -39,7 +40,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun share(name: String, overview: String?) {
         val mimeType = "text/plain"
-        ShareCompat.IntentBuilder.from(this).apply {
+        ShareCompat.IntentBuilder(this).apply {
             setType(mimeType)
             setChooserTitle(name)
             setText("$name \n $overview\n" + getString(R.string.share_msg))
@@ -70,7 +71,7 @@ class DetailActivity : AppCompatActivity() {
                 }
 
                 btnBack.setOnClickListener {
-                    onBackPressed()
+                    finish()
                 }
             }
         }
