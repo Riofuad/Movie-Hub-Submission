@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_movie_found">No Movie Found</string>
+    <string name="no_favorite_movie">No Favorite Movie</string>
+
+    <string name="about">About</string>
+    <string name="share">Share</string>
+    <string name="setting">Setting</string>
+    <string name="search">Search</string>
+    <string name="change_language">Change Language</string>
+
+    <string name="added_to_favorite">added to Favorite!</string>
+    <string name="remove_from_favorite">remove from Favorite!</string>
+
+    <string name="content_description_back">Back</string>
+</resources>
