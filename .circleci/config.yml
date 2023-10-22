@@ -9,7 +9,7 @@ jobs:
     steps:
       - run:
           name: Set Java Home
-          command: echo 'org.gradle.java.home=/usr/local/openjdk-17' >> $HOME/.gradle/gradle.properties
+          command: echo 'org.gradle.java.home=C\:\\Program Files\\Java\\jdk-17 >> $HOME/.gradle/gradle.properties
       - checkout
       - restore_cache:
           key: android-orb-v1-
