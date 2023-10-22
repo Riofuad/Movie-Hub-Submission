@@ -3,6 +3,7 @@
     package="com.riofuad.moviehub">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33" />
 
     <application
         android:name="com.riofuad.moviehub.MyApplication"
