@@ -8,7 +8,9 @@
     <string name="setting">Pengaturan</string>
     <string name="search">Cari</string>
     <string name="change_language">Ganti Bahasa</string>
+
     <string name="added_to_favorite">diambahkan ke Favorite!</string>
     <string name="remove_from_favorite">menghapus dari Favorite!</string>
+
     <string name="content_description_back">Kembali</string>
 </resources>
