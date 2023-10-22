@@ -14,8 +14,8 @@ jobs:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew
       - run:
-          name: Set JavaHome
-          command: echo 'export JAVA_HOME="C\:\\Program Files\\Java\\jdk-17"' >> $BASH_ENV
+          name: Set Java Home
+          command: echo 'export JAVA_HOME=C\:\\Program Files\\Java\\jdk-17' >> $BASH_ENV
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
