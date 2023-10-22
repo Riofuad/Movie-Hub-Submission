@@ -4,8 +4,6 @@
     package="com.riofuad.moviehub">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"
-        tools:ignore="GradleOverrides" />
 
     <application
         android:name="com.riofuad.moviehub.MyApplication"
@@ -16,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieHub">
         <activity android:name="com.riofuad.moviehub.setting.SettingActivity"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/setting"
             />
         <activity
@@ -31,11 +29,11 @@
         </activity>
         <activity
             android:name="com.riofuad.moviehub.detail.DetailActivity"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/detail_movie" />
         <activity
             android:name="com.riofuad.moviehub.home.HomeActivity"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/home" />
     </application>
 
