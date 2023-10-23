@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.riofuad.moviehub.core.data.source.local.entity.MovieEntity
 
-@Database(entities = [MovieEntity::class], version = 4, exportSchema = false)
+@Database(entities = [MovieEntity::class], version = 6, exportSchema = false)
 abstract class MovieDatabase : RoomDatabase() {
 
     abstract fun movieDao(): MovieDao
