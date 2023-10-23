@@ -1,2 +1,2 @@
-# Movie-Hub-App
-[![Riofuad](https://circleci.com/gh/Riofuad/Movie-Hub-App.svg?style=svg)](https://circleci.com/gh/Riofuad/Movie-Hub-App)
+# Movie-Hub-Submission
+[![Riofuad](https://circleci.com/gh/Riofuad/Movie-Hub-Submission.svg?style=svg)](https://circleci.com/gh/Riofuad/Movie-Hub-Submission)
