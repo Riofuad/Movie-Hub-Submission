@@ -60,7 +60,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun instantiateFragment(className: String): Fragment? {
         return try {
-            Class.forName(className).newInstance() as Fragment
+            Class.forName(className).getDeclaredConstructor().newInstance() as Fragment
         } catch (e: Exception) {
             Toast.makeText(this, "Module not found", Toast.LENGTH_SHORT).show()
             null

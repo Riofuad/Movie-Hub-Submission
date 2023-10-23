@@ -7,8 +7,11 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.riofuad.moviehub.R
 import com.riofuad.moviehub.core.data.Resource
@@ -28,7 +31,7 @@ import kotlinx.coroutines.ObsoleteCoroutinesApi
 @AndroidEntryPoint
 class MovieFragment : Fragment() {
 
-    private val movieViewModel: MovieViewModel by viewModels()
+    internal val movieViewModel: MovieViewModel by viewModels()
     private var _fragmentMovieBinding: FragmentMovieBinding? = null
     private val binding get() = _fragmentMovieBinding as FragmentMovieBinding
     private lateinit var searchView: SearchView
@@ -36,7 +39,6 @@ class MovieFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -50,6 +52,47 @@ class MovieFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.search_menu, menu)
+                val searchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+                searchView = menu.findItem(R.id.search_menu).actionView as SearchView
+                searchView.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
+                searchView.queryHint = resources.getString(R.string.search)
+
+                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+                    override fun onQueryTextSubmit(newText: String): Boolean {
+                        return true
+                    }
+
+                    override fun onQueryTextChange(newText: String): Boolean {
+
+                        newText.let {
+                            if (newText == "" || newText.isEmpty()) {
+                                observerMovie()
+                            } else {
+                                movieViewModel.setSearchQuery(it)
+                            }
+                        }
+                        return true
+                    }
+                })
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.menu_setting -> {
+                        val intent = Intent(activity, SettingActivity::class.java)
+                        startActivity(intent)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         if (activity != null) {
 
@@ -86,38 +129,7 @@ class MovieFragment : Fragment() {
         }
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.search_menu, menu)
-        val searchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        searchView = menu.findItem(R.id.search_menu).actionView as SearchView
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
-        searchView.queryHint = resources.getString(R.string.search)
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-
-            override fun onQueryTextSubmit(newText: String): Boolean {
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String): Boolean {
-
-                newText.let {
-                    if (newText == "" || newText.isEmpty()) {
-                        observerMovie()
-                    } else {
-                        movieViewModel.setSearchQuery(it)
-                    }
-                }
-                return true
-            }
-        })
-
-        super.onCreateOptionsMenu(menu, inflater)
-
-    }
-
-    private fun observerMovie() {
+    internal fun observerMovie() {
         movieViewModel.movies.observe(viewLifecycleOwner) { movie ->
             if (movie != null) {
                 when (movie) {
@@ -140,15 +152,6 @@ class MovieFragment : Fragment() {
                 }
             }
         }
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menu_setting) {
-            val intent = Intent(activity, SettingActivity::class.java)
-            startActivity(intent)
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     override fun onDestroyView() {
