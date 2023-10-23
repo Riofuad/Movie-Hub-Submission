@@ -11,7 +11,6 @@ import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
-
 @FlowPreview
 @ExperimentalCoroutinesApi
 @ObsoleteCoroutinesApi
@@ -25,7 +24,7 @@ class MovieViewModel @Inject constructor(movieAppUseCase: MovieAppUseCase) : Vie
         queryChannel.trySend(search)
     }
 
-    val movieResult = queryChannel.asFlow()
+        val movieResult = queryChannel.asFlow()
         .debounce(300)
         .distinctUntilChanged()
         .filter {
@@ -34,4 +33,16 @@ class MovieViewModel @Inject constructor(movieAppUseCase: MovieAppUseCase) : Vie
         .flatMapLatest {
             movieAppUseCase.searchMovie(it)
         }.asLiveData()
+//    val movieResult = channelFlow {
+//        queryChannel.asFlow()
+//            .debounce(300)
+//            .distinctUntilChanged()
+//            .filter {
+//                it.trim().isNotEmpty()
+//            }
+//            .collect {
+//                val result = movieAppUseCase.searchMovie(it)
+//                send(result)
+//            }
+//    }.asLiveData()
 }
