@@ -15,7 +15,10 @@ jobs:
           command: sudo chmod +x ./gradlew
       - run:
           name: Generate local properties
-          command: touch local.properties && sudo apt-get install openjdk-17-jdk
+          command: touch local.properties
+      - run:
+          name: Set config
+          command: echo "BASE_URL = https://api.themoviedb.org/3/" >> local.properties 
       - run:
           command: |-
             #!/bin/bash
@@ -57,3 +60,8 @@ jobs:
       - store_artifacts:  
           path: app/build/outputs/apk/debug/
           destination: artifact-file
+
+workflows:
+  build:
+    jobs:
+      - build
