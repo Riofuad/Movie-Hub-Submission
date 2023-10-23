@@ -15,7 +15,7 @@ jobs:
           command: sudo chmod +x ./gradlew
       - run:
           name: Generate local properties
-          command: touch local.properties
+          command: touch local.properties && sudo apt-get install openjdk-17-jdk
       - run:
           command: |-
             #!/bin/bash
